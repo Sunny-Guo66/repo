@@ -1,8 +1,17 @@
-Origin: Reposi3
-Label: Reposi3
-Suite: stable
-Version: 1.0
-Codename: ios
-Architectures: iphoneos-arm
-Components: main
-Description: Reposi3 - a cydia repo template
+Date: Tue, 24 Nov 2026 12:04:21 +0000
+MD5Sum:
+ 686d0e3b5f480ec800daf500b3025a88             1273 Packages
+ 2b30bfc393b4772205880d5122471b2c              643 Packages.bz2
+ febd8dbef71d0ed8b611e34468e1fd5e               38 Release
+SHA1:
+ 092b28defa0d56dc5d0f092d939194cb86dffdf6             1273 Packages
+ 8ffd02a993334132718884ccaab70bd06825eb32              643 Packages.bz2
+ d66f7f840ceb18def01a0f20809025868285cab1               38 Release
+SHA256:
+ 5cb0caf36ea93243461938a6b10dafc0eb12d142a1195fce7cb8e4611b22192c             1273 Packages
+ 22947689fb9431157415c2a28d69ce1bf7fec43eda8e0450f18642f3a69bf912              643 Packages.bz2
+ 7272790f67c01d0f7d566bd06bcc1d7033246a6d1d6712a6ffeedfe4692f945b               38 Release
+SHA512:
+ e608857ccbd95c6438519a9a0c7767b2f9d8f9591c88b070fb65c508881b9a9276ef4056ea1041839a594596db25551c6a126719c7a7593c478502ed2b3c7e10             1273 Packages
+ 11f83ee5ebe93d6f8f9836cb93906c46d1db0dcb7c75b81bdd9c67c0d19b5deacc18f00f3ac3f1a0efb03b487265227a8265a3aa494d94df49ec9ad15270c44f              643 Packages.bz2
+ b9d17047edc3db7fb7e06fd82bc59044ccba70d77c15e3f590048edbcd9307ae0d3cdeceb015d1b49046f66bd516e5a1333d9f8cf23850ebb090adec9d0c6347               38 Release
