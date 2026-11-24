@@ -1,4 +1,4 @@
-name: Auto Generate APT Repo Index
+name: Auto Generate Rootless APT Repo Index
 on:
   push:
     branches: [ master ]
@@ -23,13 +23,16 @@ jobs:
       - name: Compress Packages.bz2
         run: bzip2 -k -f Packages
 
-      - name: Generate Release file
-        run: apt-ftparchive release . > Release
+      - name: Generate Release file (rootless iphoneos-arm64)
+        run: |
+          apt-ftparchive release . > Release
+          echo 'Architectures: iphoneos-arm64' >> Release
+          echo 'Components: main' >> Release
 
       - name: Commit generated index files
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add Packages Packages.bz2 Release
-          git commit -m "Auto update repo index after deb upload" || echo "No changes to commit"
+          git commit -m "[rootless] update repo index" || echo "No changes to commit"
           git push origin master
