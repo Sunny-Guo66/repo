@@ -30,3 +30,19 @@ Author: Reposi3 <reposithree@gmail.com>
 Depiction: https://supermamon.github.io/Reposi3/depictions/?p=com.supermamon.oldpackage
 Name: Old Package
 
+Package: com.yourname.replace5gplus
+Version: 1.0
+Architecture: iphoneos-arm64
+Maintainer: Sunny-Guo
+Installed-Size: 168
+Depends: mobilesubstrate
+Filename: ./debs/replace5G+改5GA_1.0_iphoneos-arm64.deb
+Size: 3300
+MD5sum: 81241e907b8a9e39b1e515c4d1740734
+SHA1: 108d75b0b8c6d19f9c96d2c29634d7fdc6e13f14
+SHA256: f6947481294d5776de27d1d6c8a19efa79476001a9a34e6f046b7f58427bca4d
+Section: Tweaks
+Description: 把状态栏5G+替换成5Gᴀ
+Author: Sunny-Guo
+Name: Replace5GPlus
+
