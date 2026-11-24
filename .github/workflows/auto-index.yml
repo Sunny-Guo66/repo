@@ -1,7 +1,7 @@
 name: Auto Generate Rootless APT Repo Index
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   generate-index:
@@ -9,36 +9,42 @@ jobs:
     permissions:
       contents: write
     steps:
+      # ✅【新增：开启UTF-8中文环境，解决你的中文乱码核心】
+      - name: Set UTF-8 locale
+        run: |
+          sudo apt update
+          sudo apt install -y locales
+          sudo locale-gen zh_CN.UTF-8
+          echo "LC_ALL=zh_CN.UTF-8" >> $GITHUB_ENV
+          echo "LANG=zh_CN.UTF-8" >> $GITHUB_ENV
+          echo "LANGUAGE=zh_CN.UTF-8" >> $GITHUB_ENV
+
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Install dpkg-dev, apt-utils & bzip2
+      - name: Install dpkg-dev, apt-utils & bzip2 gzip
         run: |
           sudo apt update
-          sudo apt install -y dpkg-dev apt-utils bzip2
+          sudo apt install -y dpkg-dev apt-utils bzip2 gzip
 
       - name: Build Packages index
-        run: dpkg-scanpackages -m ./debs /dev/null > Packages
+        run: dpkg-scanpackages -m ./debians /dev/null > Packages
 
-      - name: Compress Packages.bz2
-        run: bzip2 -k -f Packages
+      - name: Compress Packages.gz + Packages.bz2
+        run: |
+          gzip -k -f Packages
+          bzip2 -k -f Packages
 
       - name: Generate Release file (rootless iphoneos-arm64)
         run: |
           apt-ftparchive release . > Release
-          echo 'Origin: Sunny' >> Release
-          echo 'Label: Sunny' >> Release
-          echo 'Suite: stable' >> Release
-          echo 'Version: 1.0' >> Release
-          echo 'Codename: ios' >> Release
-          echo 'Description: Sunny 个人Rootless无根插件源，适配iPhone15Pro iOS17.0+' >> Release
           echo 'Architectures: iphoneos-arm64' >> Release
           echo 'Components: main' >> Release
 
-      - name: Commit & Push changes
+      - name: Commit generated index files
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add Packages Packages.bz2 Release
-          git commit -m "[Auto] Update repo metadata & index" || echo "Nothing to commit"
-          git push
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add Packages Packages.gz Packages.bz2 Release
+          git commit -m "[rootless] update repo index" || echo "No changes to commit"
+          git push origin main
