@@ -12,10 +12,10 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Install dpkg-dev & bzip2
+      - name: Install dpkg-dev, apt-utils & bzip2
         run: |
           sudo apt update
-          sudo apt install -y dpkg-dev bzip2
+          sudo apt install -y dpkg-dev apt-utils bzip2
 
       - name: Build Packages index
         run: dpkg-scanpackages -m ./debs /dev/null > Packages
@@ -31,5 +31,5 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
           git add Packages Packages.bz2 Release
-          git commit -m "Auto update repo index after deb upload" || echo "No changes"
+          git commit -m "Auto update repo index after deb upload" || echo "No changes to commit"
           git push origin master
