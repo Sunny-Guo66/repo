@@ -46,3 +46,20 @@ Description: 把状态栏5G+替换成5Gᴀ
 Author: Sunny-Guo
 Name: Replace5GPlus
 
+Package: com.yourname.volumedownfloater
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: Sunny-Guo
+Installed-Size: 208
+Depends: mobilesubstrate
+Filename: ./debs/com.yourname.volumedownfloater_1.0.0_iphoneos-arm64.deb
+Size: 20878
+MD5sum: f795fa11cc3f6be4285163b263f253be
+SHA1: d5254f379018db3bffc53c6cee394cf452d6cc6a
+SHA256: e3c227b79d4322f77c5a3a7ff2b45c24806e19fb90e5f611540d231d099cce3f
+Section: Tweaks
+Description: 自用
+  配合控制台ipa，王者一键秒换装。
+Author: Sunny-Guo
+Name: VolumeDownFloater
+
