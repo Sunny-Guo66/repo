@@ -1,20 +1,20 @@
-Date: Tue, 24 Nov 2026 14:01:57 +0000
+Date: Tue, 24 Nov 2026 14:14:27 +0000
 MD5Sum:
  0787edb493e25a7486b83c2161fbe6ac             1745 Packages
  0bab0adc66350ae8fb78824eedf166d0              935 Packages.bz2
- 237b257e63bec0fbca6fe7e2e853f8eb               38 Release
+ 72f90bebe3d7d9a535a1c3b9038ecb30               38 Release
 SHA1:
  7643aad31c45696469dfc3a08f323f3e0bcec652             1745 Packages
  9812a0835381419140d1dd853d3ff21683705e06              935 Packages.bz2
- 40a480c94e73a595f1d37f28f7ab1e46036d94c3               38 Release
+ 28c0350e7ea8ecbed5053c0fef0881a7ed479b51               38 Release
 SHA256:
  c23c669c2823c92d49471f41064d93f8c232f18566cf4bd1515df2ef17fad8ef             1745 Packages
  89027bb6730ec3c019e9eeefc7e7037b9ba9234568bacaba88ab15bd36bae952              935 Packages.bz2
- 5ac449975cb316ef059a6c9ee90bc94fb01197ddba97822da50173ccba46c4d3               38 Release
+ 25adfbb26acf44ab2e36ee33009768836d7bb2ebe17acab48a0bb4b5768dbeba               38 Release
 SHA512:
  0895b489680b0c7858a07edcfc848627ca2f9fbede609d34a7f48cc558b60f3855ec1463fcff41016d22d2da2932e411785fc8a7f567e117893517ef8f4ec930             1745 Packages
  91ae2e8eefff60fa9144677e8b770fafb121c2c7c0d1731a6587cbe0e989c48669aa815d80c7fe986d9a5697c684b795b10253701e9331ebedf02927ce88d2b1              935 Packages.bz2
- b9db96f2dfb5cff2735ad02d8b6cee5278916080a046252eb3d084ad584824782ae6b4027666b5714b7f33d745ae4a2b2ce835a82d2cb2384d9f3ad3fcc17655               38 Release
+ 5da9018f4c9acfd44c6b11ff7ac85365a1784f3842603768767b0ca133e009e73f6dd84f3c6aac3e52a7906dc0924346aaa536e2aa49fb52877a6156bcf22b2a               38 Release
 Origin: Sunny
 Label: Sunny
 Suite: stable
