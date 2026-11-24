@@ -1,7 +1,7 @@
 name: Auto Generate Rootless APT Repo Index
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   generate-index:
@@ -9,11 +9,10 @@ jobs:
     permissions:
       contents: write
     steps:
-      # ✅【新增：开启UTF-8中文环境，解决你的中文乱码核心】
       - name: Set UTF-8 locale
         run: |
           sudo apt update
-          sudo apt install -y locales
+          sudo apt install -y locales dpkg-dev bzip2 file
           sudo locale-gen zh_CN.UTF-8
           echo "LC_ALL=zh_CN.UTF-8" >> $GITHUB_ENV
           echo "LANG=zh_CN.UTF-8" >> $GITHUB_ENV
@@ -22,18 +21,29 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Install dpkg-dev, apt-utils & bzip2 gzip
+      - name: Convert control GBK to UTF8 inside deb
         run: |
-          sudo apt update
-          sudo apt install -y dpkg-dev apt-utils bzip2 gzip
+          mkdir work
+          for debfile in ./debs/*.deb; do
+            mkdir -p work/tmp
+            cd work/tmp
+            ar x "../../$debfile"
+            mkdir controltar
+            tar -xf control.tar.* -C controltar
+            iconv -f GBK -t UTF-8 controltar/DEBIAN/control -o controltar/DEBIAN/control
+            cd controltar
+            tar -cf ../control.tar DEBIAN
+            cd ..
+            ar r "../../$debfile" control.tar data.tar.* debian-binary
+            cd ../..
+            rm -rf work/tmp
+          done
 
       - name: Build Packages index
-        run: dpkg-scanpackages -m ./debians /dev/null > Packages
+        run: dpkg-scanpackages -m ./debs /dev/null > Packages
 
-      - name: Compress Packages.gz + Packages.bz2
-        run: |
-          gzip -k -f Packages
-          bzip2 -k -f Packages
+      - name: Compress Packages.bz2
+        run: bzip2 -k -f Packages
 
       - name: Generate Release file (rootless iphoneos-arm64)
         run: |
@@ -45,6 +55,6 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add Packages Packages.gz Packages.bz2 Release
+          git add Packages Packages.bz2 Release
           git commit -m "[rootless] update repo index" || echo "No changes to commit"
-          git push origin main
+          git push origin master
