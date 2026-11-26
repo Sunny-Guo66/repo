@@ -1,3 +1,19 @@
+Package: com.sunny-guo.replace5gplus
+Version: 2.0
+Architecture: iphoneos-arm64
+Maintainer: Sunny-Guo
+Installed-Size: 168
+Depends: mobilesubstrate
+Filename: ./debs/com.sunny-guo.replace5gplus_2.0_iphoneos-arm64.deb
+Size: 4142
+MD5sum: 964e126daafcfbde001a929c18e0f663
+SHA1: af4fb6fc034baaff87128b17fb94664eb24bfc6e
+SHA256: 34e2a8fee91bd3327595089c78b102641ede0f8c0d2e5d3048879ef54ebc05a5
+Section: Tweaks
+Description: 把状态栏5G+替换成5Gᴀ，2.0版新增适配CarPlay
+Author: Sunny-Guo
+Name: Replace5GA
+
 Package: com.supermamon.newpackage
 Version: 2.0.0-1
 Architecture: iphoneos-arm
